@@ -1,0 +1,11 @@
+{
+	"name": "PokemonGo-Decoder",
+	"description": "Decode traffic of PokemonGo using request/response dump",
+	"version": "0.0.1",
+	"dependencies": {
+		"protobufjs": "*",
+		"util": "*",
+		"fs": "*",
+		"sync-request": "*"
+	}
+}

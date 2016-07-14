@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message CurrencyBalance {
+    string CurrencyName = 1;
+    int32 Amount = 2;
+}

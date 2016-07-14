@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message LevelSettings {
+    double TrainerCpModifier = 2;
+    double TrainerDifficultyModifier = 3;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message MapSettings {
+    double PokemonVisibleRange = 1;
+    double PokeNavRangeMeters = 2;
+    double EncounterRangeMeters = 3;
+    float GetMapObjectsMinRefreshSeconds = 4;
+    float GetMapObjectsMaxRefreshSeconds = 5;
+    float GetMapObjectsMinDistanceMeters = 6;
+    string GoogleMapsApiKey = 7;
+}

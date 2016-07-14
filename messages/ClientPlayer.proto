@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "PlayerAvatar.proto";
+import "DailyBonus.proto";
+import "EquippedBadge.proto";
+import "ContactSettings.proto";
+import "CurrencyBalance.proto";
+
+message ClientPlayer {
+    int64 CreationTimeMs = 1;
+    string Name = 2;
+    int32 Team = 5;
+    bytes TutorialComplete = 7;
+    PlayerAvatar PlayerAvatar = 8;
+    int32 MaxPokemonStorage = 9;
+    int32 MaxItemStorage = 10;
+    DailyBonus DailyBonus = 11;
+    EquippedBadge EquippedBadge = 12;
+    ContactSettings ContactSettings = 13;
+    repeated CurrencyBalance CurrencyBalance = 14;
+}

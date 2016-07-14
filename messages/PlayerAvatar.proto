@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+enum Sexe {
+    MALE = 0;
+    FEMALE = 1;
+}
+
+message PlayerAvatar {
+    Sexe Sexe = 8;
+    int32 Skin = 2;
+    int32 Hair = 3;
+    int32 Shirt = 4;
+    int32 Pants = 5;
+    int32 Hat = 6;
+    int32 Shoes = 7;
+    int32 Eyes = 9;
+    int32 Backpack = 10;
+}

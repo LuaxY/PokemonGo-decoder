@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message EquippedBadge {
+    int32 EquippedBadge = 1; // enum HoloBadgeType
+    int32 Level = 2;
+    int64 NextEquipChangeAllowedTimestampMs = 3;
+}

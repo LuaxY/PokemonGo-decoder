@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DailyBonus {
+    int64 NextCollectTimestampMs = 1;
+    int64 NextDefenderBonusCollectTimestampMs = 2;
+}

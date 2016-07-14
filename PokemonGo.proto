@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+import "messages/Rpc.proto";
+import "messages/ClientPlayer.proto";
+import "messages/GlobalSettings.proto";
+
+message Footer {
+    int32 unknown1 = 1;
+    Unknown2 unknown2 = 2;
+
+    message Unknown2 {
+        bytes unknown1 = 1;
+    }
+}
+
+message RequestEnvelop {
+    Direction direction = 1;
+    int64 request_id = 3;
+    repeated Request requests = 4;
+    Footer footer = 6;
+    double latitude = 7;
+    double longitude = 8;
+    double altitude = 9;
+    AuthInfo auth_info = 10;
+    int64 unknown12 = 12;
+
+    message Request {
+        Method method = 1;
+        bytes value = 2;
+    }
+
+    message Unknown3 {
+        string unknown4 = 1;
+    }
+
+    message Unknown6 {
+        int32 unknown1 = 1;
+        Unknown2 unknown2 = 2;
+
+        message Unknown2 {
+            int32 unknown1 = 1;
+        }
+
+    }
+    message AuthInfo {
+        string provider = 1;
+        JWT token = 2;
+
+        message JWT {
+            string contents = 1;
+            int32 unknown13  = 2;
+        }
+    }
+}
+
+message ResponseEnvelop {
+    Direction direction = 1;
+    int64 response_id = 2;
+    string api_url = 3;
+    bytes footer = 6;
+    Unknown7 unknown7 = 7;
+    double latitude = 8;
+    double longitude = 9;
+    double altitude = 10;
+    Thing thing = 11;
+    repeated Payload payloads = 100;
+
+    message Unknown7 {
+        bytes unknown71 = 1;
+        int64 unknown72 = 2;
+        bytes unknown73 = 3;
+    }
+
+    message Thing {
+        bytes start = 1;
+        uint64 timestamp = 2;
+        bytes end = 3;
+    }
+
+    message Payload {
+        int32 unknown1 = 1;
+        bytes payload = 2;
+    }
+}

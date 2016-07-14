@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "FortSettings.proto";
+import "MapSettings.proto";
+import "LevelSettings.proto";
+import "InventorySettings.proto";
+
+message GlobalSettings {
+    FortSettings FortSettings = 2;
+    MapSettings MapSettings = 3;
+    LevelSettings LevelSettings = 4;
+    InventorySettings InventorySettings = 5;
+    string MinimumClientVersion = 6;
+ }

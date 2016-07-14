@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message FortSettings {
+    double InteractionRangeMeters = 1;
+    int32 MaxTotalDeployedPokemon = 2;
+    int32 MaxPlayerDeployedPokemon = 3;
+    double DeployStaminaMultiplier = 4;
+    double DeployAttackMultiplier = 5;
+    double FarInteractionRangeMeters = 6;
+}

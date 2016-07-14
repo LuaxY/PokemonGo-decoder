@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ContactSettings {
+    bool SendMarketingEmails = 1;
+    bool SendPushNotifications = 2;
+}
