@@ -6,7 +6,7 @@ var request = require('sync-request');
 var args = process.argv.slice(2);
 
 if (args.length < 2) {
-    console.log("usage: node decoder.js {REQUEST_DUMP} {RESPONSE_DUMP}");
+    console.log("usage: node decoder.js {REQUEST_DUMP} {RESPONSE_DUMP} [show location 0|1]");
     process.exit(-1);
 }
 
@@ -15,6 +15,8 @@ var root = builder.build();
 var request_envelop = root.RequestEnvelop.decode(fs.readFileSync(args[0]));
 var response_envelop = root.ResponseEnvelop.decode(fs.readFileSync(args[1]));
 var methods = [];
+
+var showLocation = args[2] == 1 ? true : false;
 
 if (request_envelop.request_id + "" != response_envelop.response_id + "") {
     console.log("Request and respond ID are different");
@@ -34,11 +36,14 @@ request_envelop.requests.forEach(function(request) {
     console.log("\t- " + method);
 })
 
-var map = request("GET", "http://maps.googleapis.com/maps/api/geocode/json?latlng="+request_envelop.latitude+","+request_envelop.longitude+"&sensor=false");
-var location = JSON.parse(map.getBody('utf8')).results[0].formatted_address;
-//var location = "";
-
-console.log("[+] Location: " + location);
+if (showLocation) {
+    var map = request("GET", "http://maps.googleapis.com/maps/api/geocode/json?latlng="+request_envelop.latitude+","+request_envelop.longitude+"&sensor=false");
+    var location = JSON.parse(map.getBody('utf8')).results[0].formatted_address;
+    console.log("[+] Location: " + location);
+} else {
+    console.log("[+] Latitude: " + request_envelop.latitude);
+    console.log("[+] Longitude: " + request_envelop.longitude);
+}
 
 if (request_envelop.auth_info) console.log("[+] Auth Provider: " + request_envelop.auth_info.provider);
 
