@@ -3,6 +3,7 @@ syntax = "proto3";
 import "messages/Rpc.proto";
 import "messages/ClientPlayer.proto";
 import "messages/GlobalSettings.proto";
+import "messages/InventoryDelta.proto";
 
 message Footer {
     int32 unknown1 = 1;
@@ -78,7 +79,7 @@ message ResponseEnvelop {
     }
 
     message Payload {
-        int32 unknown1 = 1;
+        int32 success = 1;
         bytes payload = 2;
     }
 }

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+message PlayerStats {
+    int32 Level = 1;
+    int64 Experience = 2;
+    int64 PrevLevelExp = 3;
+    int64 NextLevelExp = 4;
+    float KmWalked = 5;
+    int32 NumPokemonEncountered = 6;
+    int32 NumUniquePokedexEntries = 7;
+    int32 NumPokemonCaptured = 8;
+    int32 NumEvolutions = 9;
+    int32 PokeStopVisits = 10;
+    int32 NumberOfPokeballThrown = 11;
+    int32 NumEggsHatched = 12;
+    int32 BigMagikarpCaught = 13;
+    int32 NumBattleAttackWon = 14;
+    int32 NumBattleAttackTotal = 15;
+    int32 NumBattleDefendedWon = 16;
+    int32 NumBattleTrainingWon = 17;
+    int32 NumBattleTrainingTotal = 18;
+    int32 PrestigeRaisedTotal = 19;
+    int32 PrestigeDroppedTotal = 20;
+    int32 NumPokemonDeployed = 21;
+    int32 NumPokemonCaughtByType = 22; // enum ??
+    int32 SmallRattataCaught = 23;
+}

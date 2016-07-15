@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "Pokemon.proto";
+import "Item.proto";
+import "PokedexEntry.proto";
+import "PlayerStats.proto";
+import "PlayerCurrency.proto";
+import "PlayerCamera.proto";
+import "InventoryUpgrades.proto";
+import "AppliedItems.proto";
+import "EggIncubators.proto";
+import "PokemonFamily.proto";
+
+message HoloInventoryItem {
+    Pokemon Pokemon = 1;
+    Item Item = 2;
+    PokedexEntry PokedexEntry = 3;
+    PlayerStats PlayerStats = 4;
+    PlayerCurrency PlayerCurrency = 5;
+    PlayerCamera PlayerCamera = 6;
+    InventoryUpgrades InventoryUpgrades = 7;
+    AppliedItems AppliedItems = 8;
+    EggIncubators EggIncubators = 9;
+    PokemonFamily PokemonFamily = 10;
+}

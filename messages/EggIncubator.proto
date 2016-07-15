@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+// import "ItemEnum.proto"
+// import "EggIncubatorType.proto"
+
+message EggIncubator {
+    string ItemId = 1;
+    int32 Item = 2; // enum ItemEnum
+    int32 IncubatorType = 3; // enum EggIncubatorType
+    int32 UsesRemaining = 4;
+    int64 PokemonId = 5;
+    double StartKmWalked = 6;
+    double TargetKmWalked = 7;
+}

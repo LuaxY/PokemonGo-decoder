@@ -58,7 +58,7 @@ console.log("");
 
 for (var i = 0; i < methods.length; i++) {
     var method = methods[i]
-    var payload = response_envelop.payloads[i].payload;
+    var payload = response_envelop.payloads[i].payload.toBuffer();
 
     console.log("[+] Response: " + method);
 
@@ -72,7 +72,7 @@ for (var i = 0; i < methods.length; i++) {
         console.log("\tPlayerAvatar:");
         console.log("\t\tSexe: " + sexe);
         console.log("\t\tSkin: " + client_player.PlayerAvatar.Skin);
-        console.log("\t\tsHair: " + client_player.PlayerAvatar.Hair);
+        console.log("\t\tHair: " + client_player.PlayerAvatar.Hair);
         console.log("\t\tShirt: " + client_player.PlayerAvatar.Shirt);
         console.log("\t\tPants: " + client_player.PlayerAvatar.Pants);
         console.log("\t\tHat: " + client_player.PlayerAvatar.Hat);
@@ -86,6 +86,14 @@ for (var i = 0; i < methods.length; i++) {
         client_player.CurrencyBalance.forEach(function(currency) {
             console.log("\t\t" + currency.CurrencyName + ": " + currency.Amount);
         });
+    }
+
+    if (method == "GET_INVENTORY") {
+        /*try {
+            var inventory = root.InventoryDelta.decode(payload);
+        } catch (e) {
+            console.log(e);
+        }*/
     }
 
     console.log("");

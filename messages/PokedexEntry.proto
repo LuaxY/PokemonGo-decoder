@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message PokedexEntry {
+    int32 PokedexEntryNumber = 1;
+    int32 TimesEncountered = 2;
+    int32 TimesCaptured = 3;
+    int32 EvolutionStonePieces = 4;
+    int32 EvolutionStones = 5;
+}

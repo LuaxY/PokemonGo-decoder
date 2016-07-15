@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "PokemonName.proto";
+//import "PokemonCreateContext.proto";
+//import "Pokeball.proto";
+
+message Pokemon {
+	uint64 Id = 1;
+	PokemonName PokemonId = 2;
+	int32 Cp = 3;
+	int32 Stamina = 4;
+	int32 MaxStamina = 5;
+	int32 Move1 = 6;
+	int32 Move2 = 7;
+	string DeployedFortId = 8;
+	string OwnerName = 9;
+	bool IsEgg = 10;
+	double EggKmWalkedTarget = 11;
+	double EggKmWalkedStart = 12;
+	int32 Origin = 14; // enum PokemonCreateContext
+	float HeightM = 15;
+	float WeightKg = 16;
+	int32 IndividualAttack = 17;
+	int32 IndividualDefense = 18;
+	int32 IndividualStamina = 19;
+	float CpMultiplier = 20;
+	int32 Pokeball = 21; // enum Pokeball
+	int64 CapturedS2CellId = 22;
+	int32 BattlesAttacked = 23;
+	int32 BattlesDefended = 24;
+	string EggIncubatorId = 25;
+	int64 CreationTimeMs = 26;
+	int32 NumUpgrades = 27;
+	float AdditionalCpMultiplier = 28;
+	bool Favorite = 29;
+	string Nickname = 30;
+	bool FromFort = 31;
+}

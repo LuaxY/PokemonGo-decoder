@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "HoloInventoryItem.proto";
+
+message InventoryItem {
+    int64 ModifiedTimestamp = 1;
+    int64 DeletedItemKey = 2;
+    HoloInventoryItem Item = 3;
+}

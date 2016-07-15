@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ItemEnum.proto";
+
+message Item {
+    ItemEnum Item = 1;
+    int32 Count = 2;
+    bool Unseen = 3;
+}

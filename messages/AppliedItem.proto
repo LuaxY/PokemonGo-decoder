@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "ItemEnum.proto";
+import "ItemType.proto";
+
+message AppliedItem {
+    ItemEnum Item = 1;
+    ItemType ItemType = 2;
+    int64 ExpirationMs = 3;
+    int64 AppliedMs = 4;
+}

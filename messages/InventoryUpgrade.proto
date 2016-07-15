@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ItemEnum.proto";
+//import "InventoryUpgradeType.proto";
+
+message InventoryUpgrade {
+    ItemEnum Item = 1;
+    int32 UpgradeType = 2; // enum InventoryUpgradeType
+    int32 AdditionalStorage = 3;
+}
