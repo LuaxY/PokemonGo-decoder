@@ -1,0 +1,74 @@
+=== REQUEST ===
+[+] Request ID: 2834629xxxxxxxxxxxx
+[+] Requests:
+	- GET_PLAYER
+	- GET_HATCHED_EGGS
+	- GET_INVENTORY
+	- CHECK_AWARDED_BADGES
+	- DOWNLOAD_SETTINGS
+[+] Location: xxxxxxxxxxxxxxx, 13100 Aix-en-Provence, France
+[+] Auth Provider: google
+
+=== RESPONSE ===
+[+] Response ID: 2834629xxxxxxxxxxxx
+[+] API URL: pgorelease.nianticlabs.com/plfe/276
+
+[+] Response: GET_PLAYER
+	Name: xxxxxx
+	Creation: 14680967xxxxx
+	Team: 0
+	PlayerAvatar:
+		Sexe: MALE
+		Skin: 0
+		Hair: 5
+		Shirt: 0
+		Pants: 0
+		Hat: 2
+		Shoes: 1
+		Eyes: 4
+		Backpack: 2
+	Max Pokemon Storage: 250
+	Max Item Storage: 350
+	Currency Balance:
+		POKECOIN: 0
+		STARDUST: 700
+
+[+] Response: GET_HATCHED_EGGS
+
+[+] Response: GET_INVENTORY
+	Player:
+		Level: 3
+		Exp: 5100/6000
+		Stats:
+			Km walked: 0.70711874961xxxxx
+			Pokemon encountered: 7
+			Pokemon captured: 7
+			Unique Pokedex entries: 6
+			PokeStop visited: 28
+			Pokeball trhown: 18
+	Pokemons:
+		PIDGEY
+		RATTATA
+		RATTATA
+		DODUO
+		PINSIR
+		ZUBAT
+		CHARMENDER
+	Eggs:
+		Egg (5 Km)
+		Egg (2 Km)
+		Egg (5 Km)
+		Egg (10 Km)
+		Egg (5 Km) in incubator
+		Egg (5 Km)
+		Egg (10 Km)
+		Egg (5 Km)
+		Egg (2 Km)
+	Items:
+		ITEM_INCUBATOR_BASIC_UNLIMITED (x1)
+		ITEM_POKE_BALL (x144)
+		ITEM_INCENSE_ORDINARY (x1)
+
+[+] Response: CHECK_AWARDED_BADGES
+
+[+] Response: DOWNLOAD_SETTINGS

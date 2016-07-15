@@ -15,6 +15,8 @@ npm install
 node decode.js {REQUEST_DUMP_FILE} {RESPONSE_DUMP_FILE}
 ```
 
+[Result example](result_example)
+
 ## Based on
 - [tejado/pokemongo-api-demo](https://github.com/tejado/pokemongo-api-demo)
 - [bettse/mitmdump_decoder](https://github.com/bettse/mitmdump_decoder)
