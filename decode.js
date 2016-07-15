@@ -89,11 +89,69 @@ for (var i = 0; i < methods.length; i++) {
     }
 
     if (method == "GET_INVENTORY") {
-        /*try {
-            var inventory = root.InventoryDelta.decode(payload);
-        } catch (e) {
-            console.log(e);
-        }*/
+        var inventory = root.InventoryDelta.decode(payload);
+
+        var player = undefined;
+        var pokemons = [];
+        var eggs = [];
+        var items = [];
+
+        inventory.InventoryItems.forEach(function(inventory_item) {
+            if (inventory_item.Item) {
+                if (inventory_item.Item.Pokemon) {
+                    if (inventory_item.Item.Pokemon.PokemonId) {
+                        var pokemon_name = ProtoBuf.Reflect.Enum.getName(root.PokemonName, inventory_item.Item.Pokemon.PokemonId);
+                        pokemons.push(pokemon_name);
+                    }
+
+                    if (inventory_item.Item.Pokemon.IsEgg && inventory_item.Item.Pokemon.IsEgg == true) {
+                        var additional_info = "";
+
+                        if (inventory_item.Item.Pokemon.EggIncubatorId) {
+                            additional_info = "in incubator"
+                        }
+                        eggs.push("Egg (" + inventory_item.Item.Pokemon.EggKmWalkedTarget + " Km) " + additional_info);
+                    }
+                }
+
+                if (inventory_item.Item.PlayerStats) {
+                    player = inventory_item.Item.PlayerStats;
+                }
+
+                if (inventory_item.Item.Item) {
+                    var item_name = ProtoBuf.Reflect.Enum.getName(root.ItemEnum, inventory_item.Item.Item.Item);
+                    items.push(item_name + " (x" + inventory_item.Item.Item.Count + ")");
+                }
+            }
+        });
+
+        if (player) {
+            console.log("\tPlayer:");
+            console.log("\t\tLevel: " + player.Level);
+            console.log("\t\tExp: " + player.Experience + "/" + player.NextLevelExp);
+            console.log("\t\tStats:");
+            console.log("\t\t\tKm walked: " + player.KmWalked);
+            console.log("\t\t\tPokemon encountered: " + player.NumPokemonEncountered);
+            console.log("\t\t\tPokemon captured: " + player.NumPokemonCaptured);
+            console.log("\t\t\tUnique Pokedex entries: " + player.NumUniquePokedexEntries);
+            console.log("\t\t\tPokeStop visited: " + player.PokeStopVisits);
+            console.log("\t\t\tPokeball trhown: " + player.NumberOfPokeballThrown);
+        }
+
+        console.log("\tPokemons:");
+        pokemons.forEach(function(pokemon) {
+            console.log("\t\t" + pokemon);
+        });
+
+        console.log("\tEggs:");
+        eggs.forEach(function(egg) {
+            console.log("\t\t" + egg);
+        });
+
+        console.log("\tItems:");
+        items.forEach(function(item) {
+            console.log("\t\t" + item);
+        });
     }
 
     console.log("");

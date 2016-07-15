@@ -22,6 +22,6 @@ message PlayerStats {
     int32 PrestigeRaisedTotal = 19;
     int32 PrestigeDroppedTotal = 20;
     int32 NumPokemonDeployed = 21;
-    int32 NumPokemonCaughtByType = 22; // enum ??
+    bytes NumPokemonCaughtByType = 22; // repeated int32 ??
     int32 SmallRattataCaught = 23;
 }

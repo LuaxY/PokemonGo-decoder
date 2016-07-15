@@ -5,7 +5,7 @@ import "PokemonName.proto";
 //import "Pokeball.proto";
 
 message Pokemon {
-	uint64 Id = 1;
+	fixed64 Id = 1;
 	PokemonName PokemonId = 2;
 	int32 Cp = 3;
 	int32 Stamina = 4;

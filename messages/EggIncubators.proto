@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "EggIncubator.proto";
+
 message EggIncubators {
-    //unknown EggIncubator = 1;
+    EggIncubator EggIncubator = 1;
 }

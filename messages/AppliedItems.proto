@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-//import "ItemEnum.proto";
+import "AppliedItem.proto";
 
 message AppliedItems {
-    int32 Item = 4; // enum ItemEnum
+    AppliedItem Item = 4;
 }
