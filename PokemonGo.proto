@@ -31,7 +31,7 @@ message RequestEnvelop {
     }
 
     message Unknown3 {
-        string unknown4 = 1;
+        string unknown1 = 1;
     }
 
     message Unknown6 {
@@ -49,7 +49,7 @@ message RequestEnvelop {
 
         message JWT {
             string contents = 1;
-            int32 unknown13  = 2;
+            int32 unknown2  = 2;
         }
     }
 }
@@ -63,23 +63,24 @@ message ResponseEnvelop {
     double latitude = 8;
     double longitude = 9;
     double altitude = 10;
-    Thing thing = 11;
-    repeated Payload payloads = 100;
+    Unknown11 unknown11 = 11;
+    repeated Response responses = 100;
 
     message Unknown7 {
-        bytes unknown71 = 1;
-        int64 unknown72 = 2;
-        bytes unknown73 = 3;
+        bytes unknown7_1 = 1;
+        int64 timestamp = 2;
+        bytes unknown7_3 = 3;
     }
 
-    message Thing {
-        bytes start = 1;
+    message Unknown11 {
+        bytes unknown11_1 = 1;
         uint64 timestamp = 2;
-        bytes end = 3;
+        bytes unknown11_3 = 3;
     }
 
-    message Payload {
+    message Response {
         int32 success = 1;
         bytes payload = 2;
+        GlobalSettings settings = 3;
     }
 }

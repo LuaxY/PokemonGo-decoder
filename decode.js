@@ -14,6 +14,8 @@ var builder = ProtoBuf.loadProtoFile("PokemonGo.proto");
 var root = builder.build();
 var request_envelop = root.RequestEnvelop.decode(fs.readFileSync(args[0]));
 var response_envelop = root.ResponseEnvelop.decode(fs.readFileSync(args[1]));
+var request_direction = ProtoBuf.Reflect.Enum.getName(root.Direction, request_envelop.direction);
+var response_direction = ProtoBuf.Reflect.Enum.getName(root.Direction, response_envelop.direction);
 var methods = [];
 
 var showLocation = args[2] == 1 ? true : false;
@@ -23,6 +25,11 @@ if (request_envelop.request_id + "" != response_envelop.response_id + "") {
     console.log("You have to use the same pair of request/response dump");
     console.log("[+] Request ID:  " + request_envelop.request_id);
     console.log("[+] Response ID: " + response_envelop.response_id);
+    process.exit(-1);
+}
+
+if (request_direction != "REQUEST") {
+    console.log("Invalid request direction: " + request_direction + "(" + request_envelop.direction + ")");
     process.exit(-1);
 }
 
@@ -49,6 +56,11 @@ if (request_envelop.auth_info) console.log("[+] Auth Provider: " + request_envel
 
 console.log("");
 
+if (response_envelop.direction != 2) { // maybe this is not direction
+    console.log("Invalid response direction: " + response_direction + " (" + response_envelop.direction + ")");
+    process.exit(-1);
+}
+
 console.log("=== RESPONSE ===");
 console.log("[+] Response ID: " + response_envelop.response_id);
 
@@ -58,7 +70,7 @@ console.log("");
 
 for (var i = 0; i < methods.length; i++) {
     var method = methods[i]
-    var payload = response_envelop.payloads[i].payload.toBuffer();
+    var payload = response_envelop.responses[i].payload.toBuffer();
 
     console.log("[+] Response: " + method);
 
@@ -152,6 +164,13 @@ for (var i = 0; i < methods.length; i++) {
         items.forEach(function(item) {
             console.log("\t\t" + item);
         });
+    }
+
+    if (method == "DOWNLOAD_SETTINGS") {
+        console.log("\tHash: " + payload.toString());
+        var settings = root.GlobalSettings.decode(response_envelop.responses[i].settings.toBuffer());
+        console.log("\tSettings: \n");
+        console.log(settings);
     }
 
     console.log("");
