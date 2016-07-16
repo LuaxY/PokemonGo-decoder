@@ -56,10 +56,10 @@ if (request_envelop.auth_info) console.log("[+] Auth Provider: " + request_envel
 
 console.log("");
 
-if (response_envelop.direction != 2) { // maybe this is not direction
+/*if (response_envelop.direction != 2) { // maybe this is not direction
     console.log("Invalid response direction: " + response_direction + " (" + response_envelop.direction + ")");
     process.exit(-1);
-}
+}*/
 
 console.log("=== RESPONSE ===");
 console.log("[+] Response ID: " + response_envelop.response_id);
@@ -70,12 +70,13 @@ console.log("");
 
 for (var i = 0; i < methods.length; i++) {
     var method = methods[i]
-    var payload = response_envelop.responses[i].payload.toBuffer();
+    var response = response_envelop.responses[i].toBuffer();
 
     console.log("[+] Response: " + method);
 
     if (method == "GET_PLAYER") {
-        var client_player = root.ClientPlayer.decode(payload);
+        var payload = root.ResponseCommon.decode(response);
+        var client_player = root.ClientPlayer.decode(payload.payload);
         var sexe = ProtoBuf.Reflect.Enum.getName(root.Sexe, client_player.PlayerAvatar.Sexe);
 
         console.log("\tName: " + client_player.Name);
@@ -101,7 +102,8 @@ for (var i = 0; i < methods.length; i++) {
     }
 
     if (method == "GET_INVENTORY") {
-        var inventory = root.InventoryDelta.decode(payload);
+        var payload = root.ResponseCommon.decode(response);
+        var inventory = root.InventoryDelta.decode(payload.payload);
 
         var player = undefined;
         var pokemons = [];
@@ -150,27 +152,49 @@ for (var i = 0; i < methods.length; i++) {
             console.log("\t\t\tPokeball trhown: " + player.NumberOfPokeballThrown);
         }
 
-        console.log("\tPokemons:");
-        pokemons.forEach(function(pokemon) {
-            console.log("\t\t" + pokemon);
-        });
+        if (pokemons.length > 0) {
+            console.log("\tPokemons:");
+            pokemons.forEach(function(pokemon) {
+                console.log("\t\t" + pokemon);
+            });
+        }
 
-        console.log("\tEggs:");
-        eggs.forEach(function(egg) {
-            console.log("\t\t" + egg);
-        });
+        if (eggs.length > 0) {
+            console.log("\tEggs:");
+            eggs.forEach(function(egg) {
+                console.log("\t\t" + egg);
+            });
+        }
 
-        console.log("\tItems:");
-        items.forEach(function(item) {
-            console.log("\t\t" + item);
-        });
+        if (items.length > 0) {
+            console.log("\tItems:");
+            items.forEach(function(item) {
+                console.log("\t\t" + item);
+            });
+        }
     }
 
     if (method == "DOWNLOAD_SETTINGS") {
-        console.log("\tHash: " + payload.toString());
-        var settings = root.GlobalSettings.decode(response_envelop.responses[i].settings.toBuffer());
-        console.log("\tSettings: \n");
-        console.log(settings);
+        var settings = root.ResponseSettings.decode(response);
+        console.log("\tHash: " + settings.hash);
+        if (settings.settings) {
+            var settings = root.GlobalSettings.decode(settings.settings.toBuffer());
+            console.log("\tSettings: \n");
+            console.log(settings);
+        }
+    }
+
+    if (method == "GET_ASSET_DIGEST") {
+        var asset_digest = root.ResponseAssetDigest.decode(response);
+        // data not relevant
+    }
+
+    if (method == "GET_MAP_OBJECTS") {
+        var map_objects = root.ResponseMapObjects.decode(response);
+    }
+
+    if (method == "GET_PLAYER_PROFILE") {
+        var player_profile = root.ResponsePlayerProfile.decode(response);
     }
 
     console.log("");

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message AssetDigestEntry {
+    string AssetId = 1;
+    string BundleName = 2;
+    int64 Version = 3;
+    fixed32 Checksum = 4;
+    int32 Size = 5;
+    bytes Key = 6;
+}

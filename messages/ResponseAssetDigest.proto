@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "AssetDigestEntry.proto";
+
+message ResponseAssetDigest {
+    repeated AssetDigestEntry Digest = 1;
+    uint64 Timestamp = 2;
+}

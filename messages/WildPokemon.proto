@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "Pokemon.proto";
+
+message WildPokemon {
+    fixed64 EncounterId = 1;
+    int64 LastModifiedMs = 2;
+    double Latitude = 3;
+    double Longitude = 4;
+    string SpawnPointId = 5; // S2 geographic area of the spawn point (http://s2map.com/) (https://code.google.com/archive/p/s2-geometry-library/)
+    Pokemon Pokemon = 7;
+    int32 TimeTillHiddenMs = 11; // The amount of time before the pokemon will be gone
+}

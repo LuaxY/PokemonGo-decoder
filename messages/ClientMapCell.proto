@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "PokemonFort.proto";
+import "ClientSpawnPoint.proto";
+import "PokemonSummaryFort.proto";
+import "NearbyPokemon.proto";
+import "WildPokemon.proto";
+import "MapPokemon.proto";
+
+message ClientMapCell {
+    uint64 S2CellId = 1; // S2 geographic area that the cell covers (http://s2map.com/) (https://code.google.com/archive/p/s2-geometry-library/)
+    int64 AsOfTimeMs = 2;
+    repeated PokemonFort Fort = 3;
+    repeated ClientSpawnPoint SpawnPoint = 4;
+    repeated string DeletedObject = 6;
+    bool IsTruncatedList = 7;
+    repeated PokemonSummaryFort FortSummary = 8;
+    repeated ClientSpawnPoint DecimatedSpawnPoint = 9;
+    repeated NearbyPokemon NearbyPokemon = 11; // Pokemon farther away than 2 "steps", but still in the area (3 "steps" away)
+    repeated WildPokemon WildPokemon = 5; // Each pokemon within 2 "steps" or closer will have a WildPokemonProto and MapPokemonProto object
+    repeated MapPokemon CatchablePokemon = 10;
+}

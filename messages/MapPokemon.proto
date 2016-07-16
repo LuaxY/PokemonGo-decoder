@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "PokemonName.proto";
+
+message MapPokemon {
+    string SpawnPointId = 1; // S2 geographic area of the spawn point (http://s2map.com/) (https://code.google.com/archive/p/s2-geometry-library/)
+    fixed64 EncounterId = 2;
+    PokemonName PokedexTypeId = 3;
+    int64 ExpirationTimeMs = 4; // After this timestamp, the pokemon will be gone
+    double Latitude = 5;
+    double Longitude = 6;
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ClientPlayer.proto";
+import "InventoryDelta.proto";
+
+message ResponseCommon {
+    int32 success = 1;
+    bytes payload = 2;
+}

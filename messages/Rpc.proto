@@ -79,8 +79,3 @@ enum Method {
     SFIDA_DOWSER = 805;
     SFIDA_CAPTURE = 806;
 }
-
-enum FortType {
-    GYM = 0;
-    CHECKPOINT = 1; // Pokestop
-}

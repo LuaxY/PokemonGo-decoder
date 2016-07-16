@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "GlobalSettings.proto";
+
+message ResponseSettings {
+    int32 success = 1;
+    string hash = 2;
+    GlobalSettings settings = 3;
+}

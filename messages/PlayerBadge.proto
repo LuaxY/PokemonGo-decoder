@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "BadgeType.proto";
+
+message PlayerBadge {
+    BadgeType BadgeType = 1;
+    int32 Rank = 2;
+    int32 StartValue = 3;
+    int32 EndValue = 4;
+    double CurrentValue = 5;
+}

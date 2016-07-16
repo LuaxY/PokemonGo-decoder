@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "FortSponsor.proto";
+import "FortRenderingType.proto";
+import "TeamColor.proto";
+import "PokemonName.proto";
+import "FortType.proto";
+import "FortLureInfo.proto";
+
+// A "fort" is the internal name for a gym or pokestop point of interest
+message PokemonFort {
+    string FortId = 1;
+    int64 LastModifiedMs = 2;
+    double Latitude = 3;
+    double Longitude = 4;
+    bool Enabled = 8;
+
+    // Fields related to gyms only
+    TeamColor Team = 5; // Team that owns the gym
+    PokemonName GuardPokemonId = 6; // Highest CP Pokemon at the gym
+    int32 GuardPokemonLevel = 7;
+    int64 GymPoints = 10; // Prestigate / experience of the gym
+    bool IsInBattle = 11; // Whether someone is battling at the gym currently
+
+    // Fields related to pokestops only
+    FortType FortType = 9; // If 1, this is a pokestop
+    int64 CooldownCompleteMs = 14; // Timestamp when the pokestop can be activated again to get items / xp
+    FortSponsor Sponsor = 15;
+    FortRenderingType RenderingType = 16;
+    bytes ActiveFortModifier = 12; // Might represent the type of item applied to the pokestop, right only lures can be applied
+    FortLureInfo FortLureInfo = 13;
+}

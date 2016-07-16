@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "PokemonName.proto";
+
+message NearbyPokemon {
+    PokemonName PokedexNumber = 1;
+    float DistanceMeters = 2;
+    fixed64 EncounterId = 3;
+}

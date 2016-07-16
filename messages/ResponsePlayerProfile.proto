@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "PlayerBadge.proto";
+
+message ResponsePlayerProfile {
+    PlayerProfileResult Result = 1;
+    int64 StartTime = 2;
+    repeated PlayerBadge Badges = 3;
+
+    enum PlayerProfileResult {
+        UNSET = 0;
+        SUCCESS = 1;
+    }
+}

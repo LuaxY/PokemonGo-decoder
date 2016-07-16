@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ClientSpawnPoint {
+    double Latitude = 2;
+    double Longitude = 3;
+}

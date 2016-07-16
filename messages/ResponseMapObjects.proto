@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ClientMapCell.proto";
+import "MapObjectsStatus.proto";
+
+message ResponseMapObjects {
+    repeated ClientMapCell MapCell = 1;
+    MapObjectsStatus Status = 2;
+}

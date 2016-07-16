@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "PokemonName.proto";
+
+message FortLureInfo {
+    string FortId = 1;
+    double NotSure2 = 2;
+    PokemonName ActivePokemon = 3;
+    int64 LureExpiryMs = 4;
+}

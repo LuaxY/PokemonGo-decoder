@@ -1,9 +1,11 @@
 syntax = "proto3";
 
 import "messages/Rpc.proto";
-import "messages/ClientPlayer.proto";
-import "messages/GlobalSettings.proto";
-import "messages/InventoryDelta.proto";
+import "messages/ResponseCommon.proto";
+import "messages/ResponseSettings.proto";
+import "messages/ResponseAssetDigest.proto";
+import "messages/ResponseMapObjects.proto";
+import "messages/ResponsePlayerProfile.proto";
 
 message Footer {
     int32 unknown1 = 1;
@@ -64,7 +66,7 @@ message ResponseEnvelop {
     double longitude = 9;
     double altitude = 10;
     Unknown11 unknown11 = 11;
-    repeated Response responses = 100;
+    repeated bytes responses = 100;
 
     message Unknown7 {
         bytes unknown7_1 = 1;
@@ -76,11 +78,5 @@ message ResponseEnvelop {
         bytes unknown11_1 = 1;
         uint64 timestamp = 2;
         bytes unknown11_3 = 3;
-    }
-
-    message Response {
-        int32 success = 1;
-        bytes payload = 2;
-        GlobalSettings settings = 3;
     }
 }
